@@ -97,12 +97,14 @@
 		833CEDE41F168B720044BD7A /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
-				833CEDE51F168B720044BD7A /* AppDelegate.swift */,
+				833CEE141F168B7B0044BD7A /* View */,
+				833CEE131F168B780044BD7A /* Controller */,
 				833CEDE71F168B720044BD7A /* ViewController.swift */,
 				833CEDE91F168B720044BD7A /* Main.storyboard */,
 				833CEDEC1F168B720044BD7A /* Assets.xcassets */,
 				833CEDEE1F168B720044BD7A /* LaunchScreen.storyboard */,
 				833CEDF11F168B720044BD7A /* Info.plist */,
+				833CEDE51F168B720044BD7A /* AppDelegate.swift */,
 			);
 			path = Pokedex;
 			sourceTree = "<group>";
@@ -123,6 +125,20 @@
 				833CEE071F168B720044BD7A /* Info.plist */,
 			);
 			path = PokedexUITests;
+			sourceTree = "<group>";
+		};
+		833CEE131F168B780044BD7A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		833CEE141F168B7B0044BD7A /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
