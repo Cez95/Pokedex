@@ -43,19 +43,45 @@
                                 <rect key="frame" x="36" y="129" width="303" height="518"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gKQ-N8-bGW">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="100" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Dkb-x5-F0P">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="pokeCell" id="Dkb-x5-F0P" customClass="PokeCell" customModule="Pokedex" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4" translatesAutoresizingMaskIntoConstraints="NO" id="x6a-Hf-oB1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Charmander" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1aB-cO-Nwn">
+                                                    <rect key="frame" x="0.0" y="79.5" width="100" height="20.5"/>
+                                                    <color key="backgroundColor" red="0.88694196430000005" green="0.15761614390000001" blue="0.22540884089999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="x6a-Hf-oB1" firstAttribute="top" secondItem="Dkb-x5-F0P" secondAttribute="top" id="FaZ-zF-0cM"/>
+                                            <constraint firstAttribute="trailing" secondItem="1aB-cO-Nwn" secondAttribute="trailing" id="T5C-xw-oVu"/>
+                                            <constraint firstItem="1aB-cO-Nwn" firstAttribute="leading" secondItem="Dkb-x5-F0P" secondAttribute="leading" id="c49-h4-aP8"/>
+                                            <constraint firstAttribute="bottom" secondItem="1aB-cO-Nwn" secondAttribute="bottom" id="gyi-i7-EOr"/>
+                                            <constraint firstAttribute="bottom" secondItem="x6a-Hf-oB1" secondAttribute="bottom" id="ncK-Wn-B3u"/>
+                                            <constraint firstItem="x6a-Hf-oB1" firstAttribute="leading" secondItem="Dkb-x5-F0P" secondAttribute="leading" id="tK2-2F-RJk"/>
+                                            <constraint firstAttribute="trailing" secondItem="x6a-Hf-oB1" secondAttribute="trailing" id="zsy-hN-A3n"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="1aB-cO-Nwn" id="D66-Ch-tVe"/>
+                                            <outlet property="pokeImage" destination="x6a-Hf-oB1" id="DiG-vG-aBz"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -78,6 +104,9 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="slj-5N-pwZ" secondAttribute="bottom" constant="20" id="zUw-Kn-oYU"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collection" destination="slj-5N-pwZ" id="H9q-9i-yz7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -85,6 +114,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="4" width="120" height="120"/>
         <image name="bg" width="1920" height="1200"/>
     </resources>
 </document>
