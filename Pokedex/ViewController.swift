@@ -12,6 +12,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
     @IBOutlet weak var collection: UICollectionView!
     
+    var pokemon = [Pokemon]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +22,39 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         // Always used to instantiate the protocols
         collection.delegate = self
         collection.dataSource = self
+        
+        parsePokemonCSV()
     }
 
-   
-    
+   // This function works to prepare the CSV file in a format we can use to extract data. It places each pokemon stats into a dictionary
+    func parsePokemonCSV() {
+        // This links to the csv file that we are using. Its called "pokemon.csv"
+        let path = Bundle.main.path(forResource: "pokemon", ofType: "csv")!
+        
+        // The do/catch runs the csv parser and if there is an error due to an NSError, the application wont crash as a result
+        do {
+            let csv = try CSV(contentsOfURL: path)
+            let rows = csv.rows
+            print(rows)
+            
+            // Rows are the dictionarys that hold the pokemon stats and we then iterate through each dictionary and pull out the two stats we need, name and pokeID
+            for row in rows {
+                // We save the stats we pull out as new constants
+                let pokeID = Int(row["id"]!)!
+                let name = row["identifier"]!
+                
+                // We then assign the new constants as paramenters for a new pokemon instance
+                let poke = Pokemon(name: name, pokeID: pokeID)
+                // We then append the new pokemon instance to the pokemon list defined above.
+                pokemon.append(poke)
+                // We loop through this 718 times for each pokemon
+            }
+        } catch let err  as NSError {
+            
+            print(err.debugDescription)
+            
+        }
+    }
     
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // These are the set functions you need when you are going to have a collection view 
@@ -33,8 +64,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pokeCell", for: indexPath) as? PokeCell {
             
             // This populates the cell image with a new image for each cell
-            let pokemon = Pokemon(name: "Pokemon", pokeID: indexPath.row)
-            cell.configureCell(pokemon: pokemon)
+            let poke = pokemon[indexPath.row]
+            cell.configureCell(poke)
             
             return cell
         } else {
@@ -49,7 +80,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     // This function determins how many cells we want to have in our collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        // Adds a new cell for each instance of pokemon that is in the pokemon array defined up top
+        return pokemon.count
     }
     
     // This functions determines how many collectionviews we want to have
