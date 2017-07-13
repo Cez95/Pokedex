@@ -72,7 +72,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         do {
             let csv = try CSV(contentsOfURL: path)
             let rows = csv.rows
-            print(rows)
+           
             
             // Rows are the dictionarys that hold the pokemon stats and we then iterate through each dictionary and pull out the two stats we need, name and pokeID
             for row in rows {
